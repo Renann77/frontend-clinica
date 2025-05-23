@@ -1,0 +1,80 @@
+.agenda-container {
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(to bottom right, #1e3a8a, #1e40af, #1e429f);
+}
+
+.agenda-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  margin-bottom: 2rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+.agenda-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.agenda-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid #3b82f6;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease-in-out;
+}
+
+.agenda-card:hover {
+  transform: scale(1.02);
+}
+
+.agenda-paciente {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+}
+
+.agenda-horario {
+  color: #93c5fd; /* azul claro */
+  margin-top: 0.5rem;
+}
+
+.agenda-medico {
+  color: #60a5fa; /* azul médio */
+  margin-top: 0.25rem;
+}
+
+.agenda-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+.agenda-voltar {
+  background-color: #1d4ed8;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.agenda-voltar:hover {
+  background-color: #1e40af;
+}
+.agenda-voltar:active {
+  background-color: #1e3a8a;
+}

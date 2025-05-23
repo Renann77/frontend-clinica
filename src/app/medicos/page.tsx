@@ -1,8 +1,10 @@
+
 'use client';
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import '../styles/medicos.css'; // Importando CSS tradicional
 
 interface Doctor {
   id: number;
@@ -31,33 +33,31 @@ export default function Medicos() {
   }, [router]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 p-8">
-      <h1 className="text-4xl font-bold text-white mb-8 text-center animate-pulse">
-        🚑 Médicos Disponíveis
-      </h1>
+    <div className="medicos-container">
+      <h1 className="title">🚑 Médicos Disponíveis</h1>
 
-      <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid-doctors">
         {medicos.map((medico) => (
           <div
             key={medico.id}
             onClick={() => router.push(`/medicos/${medico.id}`)}
-            className="bg-white/10 backdrop-blur-md border border-blue-500 rounded-2xl p-6 shadow-xl hover:scale-105 transition-all cursor-pointer"
+            className="doctor-card"
           >
             <img
               src={medico.fotoUrl || '/doctor-placeholder.png'}
               alt={medico.nome}
-              className="w-full h-48 object-cover rounded-xl mb-4 border border-blue-700"
+              className="doctor-image"
             />
-            <h2 className="text-2xl font-semibold text-white">{medico.nome}</h2>
-            <p className="text-blue-300">{medico.especialidade}</p>
+            <h2 className="doctor-name">{medico.nome}</h2>
+            <p className="doctor-specialty">{medico.especialidade}</p>
           </div>
         ))}
       </div>
 
-      <div className="flex justify-center mt-10">
+      <div className="back-button-container">
         <button
           onClick={() => router.push('/dashboard')}
-          className="bg-blue-700 hover:bg-blue-900 text-white px-6 py-3 rounded-full shadow-lg"
+          className="back-button"
         >
           🔙 Voltar
         </button>

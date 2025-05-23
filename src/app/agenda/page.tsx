@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import '../styles/agenda.css'; // ✅ Importa o CSS
 
 interface Appointment {
   id: number;
@@ -32,33 +33,23 @@ export default function Agenda() {
   }, [router]);
 
   return (
-    <div className="min-h-screen p-8 bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800">
-      <h1 className="text-4xl font-bold text-white mb-8 text-center animate-pulse">
-        📅 Agenda
-      </h1>
+    <div className="agenda-container">
+      <h1 className="agenda-title">📅 Agenda</h1>
 
-      <div className="space-y-4">
+      <div className="agenda-list">
         {agenda.map((item) => (
-          <div
-            key={item.id}
-            className="bg-white/10 backdrop-blur-md border border-blue-500 rounded-xl p-6 shadow-lg hover:scale-[1.02] transition-all"
-          >
-            <h2 className="text-2xl text-white font-semibold">
-              Paciente: {item.paciente}
-            </h2>
-            <p className="text-blue-300">
+          <div key={item.id} className="agenda-card">
+            <h2 className="agenda-paciente">Paciente: {item.paciente}</h2>
+            <p className="agenda-horario">
               {item.data} às {item.horario}
             </p>
-            <p className="text-blue-400">Médico: {item.medico}</p>
+            <p className="agenda-medico">Médico: {item.medico}</p>
           </div>
         ))}
       </div>
 
-      <div className="flex justify-center mt-10">
-        <button
-          onClick={() => router.push('/dashboard')}
-          className="bg-blue-700 hover:bg-blue-900 text-white px-6 py-3 rounded-full shadow-lg"
-        >
+      <div className="agenda-footer">
+        <button onClick={() => router.push('/dashboard')} className="agenda-voltar">
           🔙 Voltar
         </button>
       </div>
